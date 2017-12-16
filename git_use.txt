@@ -1,0 +1,70 @@
+1. Download from git official website https://git-scm.com/downloads
+
+2. git config --global user.name "Your Name"
+   git config --global user.email "email@example.com"
+
+3. 可以在创建一个新的文件夹，然后在该文件下创建repository.
+	
+	git init 
+
+
+	添加文件到Git仓库，分两步：
+
+	第一步，使用命令git add <file>，注意，可反复多次使用，添加多个文件；
+
+	第二步，使用命令git commit，完成。
+
+3. git status 查看repository内的情况，即工作区，暂存区和分支区。
+	
+   git diff 比较不同版本之间的区别
+
+  
+4. 我们在不断对文件进行修改并提交修改到版本库里，可以保存一个“快照”，这个快照在Git中被称为commit，
+一旦文件改乱了，或者误删文件，就可以从最近的一个commit恢复。git记录的是不同的版本，是记录文本文件的
+改变，而对二进制文件没有作用。
+
+5. git log   --pretty=oneline  一行显示。 commit id  版本号是一大串数字。
+
+6. git reset --hard HEAD HEAD表示当前版本的指针，HEAD^ HEAD~100 上溯100个版本
+   git reset --hard commit id (并将工作区的文件更新)
+
+7. git reflog 用来记录每一次命令，能够帮助寻找commit id
+
+8. 工作区 
+   .git 版本库，包括称为stage（或者叫index）的暂存区，Git自动创建的第一个分支master，以及指向master的一个指针HEAD.
+
+   git add 将文件修改添加到暂存区
+   git commit 提交修改，将暂存区的所有内容提交到当前分支
+   可以多次add文件，然后一次commit，作为一个版本。
+
+9. Git跟踪并管理的是修改，而非文件。如果不将每次修改add到尊存区，那么不会加入到commit中。
+
+10. Git checkout --file 丢弃工作区的修改。
+
+    Git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+
+    一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
+    一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+  
+    总之，就是让这个文件回到最近一次git commit或git add时的状态。
+
+    场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+    场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+
+    场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+11. -- 隔离“数”与“路径” ！！！
+
+12. git checkout 用版本库里的版本来替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+
+13. 删除工作区的文件也是对版本库的一种修改，此时需要做的是：
+
+	rm -rf file
+	git rm （相当于git add）
+	git commit
+	彻底将文件从版本库内删除。
+
+14. 远程仓库
+     
