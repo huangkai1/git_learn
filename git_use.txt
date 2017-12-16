@@ -66,6 +66,63 @@
 	git commit
 	彻底将文件从版本库内删除。
 
-14. 远程仓库
+14. 远程仓库
      （1）先在github上建立相应的仓库
-     （2）git remote add name git@github.com:huangkai1/git_learn.git(for example) name 代表后面的地址。
+     （2）git remote add name git@github.com:huangkai1/git_learn.git(for example) name 代表后面的地址。 --allow-unrelated-histories
+
+
+15. 先在git_hub上 创建相应仓库 git clone 
+
+	关于本地仓库与远程仓库之间的pull 和push还是有不懂的地方。
+
+
+16. git checkout -b dev //创建dev的分支
+  
+    相当于： git branch dev     git checkout dev 
+		
+    查看分支： git branch
+
+    合并分支： git merge dev
+
+    删除分支： git branch -d dev
+
+17. 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+
+    如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。   
+	
+    git merge --no-ff -m "merge with no-ff" dev	
+
+18. 当从远程仓库克隆时，实际上Git自动把本地的master分支与远程的master分支对应起来，并且，远程仓库
+的默认名字是origin 
+
+19. git fetch 抓取远程仓库信息，然后 git merge 合并。
+
+20. 查看远程库信息，使用git remote -v；
+
+    本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+    从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
+    在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+    建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+    从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+
+21. 版本库的标签，也是版本库的一个快照，对应一个commit的指针。	
+	
+	创建标签：切换分支 git branch   git checkout 分支  git tag name
+
+
+22. 忽略某些文件时，需要编写 .gitignore 文件。https://github.com/github/gitignore
+	
+    .gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！
+
+23. 配置别名 git config --global alias.st status
+
+24. 配置Git的时候，加上--global是针对当前用户，如果不加则只针对当前仓库。
+
+    配置文件的位置位于 .git/config
+
+
