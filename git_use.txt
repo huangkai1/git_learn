@@ -67,4 +67,5 @@
 	彻底将文件从版本库内删除。
 
 14. 远程仓库
-     
+     （1）先在github上建立相应的仓库
+     （2）git remote add name git@github.com:huangkai1/git_learn.git(for example) name 代表后面的地址。
